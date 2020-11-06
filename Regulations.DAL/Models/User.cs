@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Regulations.Models
+namespace Regulations.DAL.Models
+{
 {
     public class User
     {

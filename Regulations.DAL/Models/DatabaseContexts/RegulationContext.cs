@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Regulations.Models;
 
-namespace Regulations.Models.DatabaseContexts
+namespace Regulations.DAL.Models
 {
     public class RegulationContext : DbContext
     {

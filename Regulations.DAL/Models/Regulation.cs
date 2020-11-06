@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 
-namespace Regulations.Models
+namespace Regulations.DAL.Models
+{
 {
     public class Regulation
     {
