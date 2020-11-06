@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace Regulations.DAL.Models
 {
-{
+
     public class Regulation
     {
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Regulations.Models;
+using Regulations.DAL.Models.ViewModels;
 
 namespace Regulations.DAL.Models
 {

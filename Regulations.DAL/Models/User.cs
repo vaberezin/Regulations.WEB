@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Regulations.DAL.Models
 {
-{
+
     public class User
     {
         public int Id { get; set; }
