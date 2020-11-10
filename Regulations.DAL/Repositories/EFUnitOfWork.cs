@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Regulations.DAL.Repositories
 {
-    class EFUnitOfWork : IUnitOfWork
+    public class EFUnitOfWork : IUnitOfWork
     {
         private RegulationContext db;
         private UserRepository userRepository;
