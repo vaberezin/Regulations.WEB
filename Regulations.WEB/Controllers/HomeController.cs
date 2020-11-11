@@ -6,32 +6,35 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Regulations.WEB.Models;
+using AutoMapper;
+using Regulations.BLL.DTO;
+using Regulations.BLL.Infrastructure;
+using Regulations.BLL.Interfaces;
+
 
 namespace Regulations.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        //regulationService ctor injection:
+        private readonly IRegulationService regulationService;
+        public HomeController(IRegulationService regServ)
         {
-            _logger = logger;
+            regulationService = regServ;
+        }
+        //end of injection
+
+        //create /home/index method:
+
+        public async Task<IActionResult> Index()
+        {
+            IEnumerable<RegulationDTO> regListDTOs = regulationService.GetRegulations(); //add async version for this method in service???
+            //map dto-model onto view-model (otkuda => kuda) -> takoe napravlenie.
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<RegulationDTO, RegulationViewModel>()).CreateMapper();
+            var regulations = mapper.Map<IEnumerable<RegulationDTO>, List<RegulationViewModel>>(regListDTOs);
+            return View(regulations);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

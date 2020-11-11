@@ -15,7 +15,8 @@ namespace Regulations.DAL.Models
         
 
         public RegulationContext(DbContextOptions<RegulationContext> options)
-            :base(options)
+            : base(options)
+
         {
             Database.EnsureCreated(); //
         }

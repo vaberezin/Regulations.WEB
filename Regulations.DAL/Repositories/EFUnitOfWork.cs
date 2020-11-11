@@ -15,9 +15,9 @@ namespace Regulations.DAL.Repositories
         private UserRepository userRepository;
         private RegulationRepository regulationRepository;
 
-        public EFUnitOfWork(string connectionString)
+        public EFUnitOfWork()
         {
-            db = new RegulationContext(connectionString); //need to correct
+            db = new RegulationContext(new DbContextOptions<RegulationContext>()); //need to correct
         }
         public IRepository<Regulation> Regulations
         {
