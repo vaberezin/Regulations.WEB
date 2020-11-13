@@ -31,7 +31,7 @@ namespace Regulations.WEB.Controllers
             IEnumerable<RegulationDTO> regListDTOs = regulationService.GetRegulations(); //add async version for this method in service???
             //map dto-model onto view-model (otkuda => kuda) -> takoe napravlenie.
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<RegulationDTO, RegulationViewModel>()).CreateMapper();
-            var regulations = mapper.Map<IEnumerable<RegulationDTO>, List<RegulationViewModel>>(regListDTOs);
+            var regulations = mapper.Map<IEnumerable<RegulationDTO>, List<RegulationViewModel>>(regListDTOs).ToList();
             return View(regulations);
         }
 

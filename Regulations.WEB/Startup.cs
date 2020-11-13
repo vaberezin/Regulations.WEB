@@ -12,7 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Regulations.DAL.Models;
-
+using Regulations.BLL.Interfaces;
+using Regulations.BLL.Services;
+using Regulations.DAL.Interfaces;
+using Regulations.DAL.Repositories;
 
 namespace Regulations.WEB
 {
@@ -27,9 +30,16 @@ namespace Regulations.WEB
 
         public void ConfigureServices(IServiceCollection services)
         {
+            
+
             string connection = Configuration.GetConnectionString("Default");
             services.AddDbContext<RegulationContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("Default")));
+                    options.UseMySql(connection));
+
+            services.AddTransient<IRegulationService, RegulationService>();
+            services.AddTransient<IRepository<User>, UserRepository>();
+            services.AddTransient<IRepository<Regulation>, RegulationRepository>();
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 
             services.Configure<RequestLocalizationOptions>(options =>
             {

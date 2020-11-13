@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Regulations.BLL.Services
 {
-    class RegulationService : IRegulationService
+    public class RegulationService : IRegulationService
     {
         private IUnitOfWork Database;
         public RegulationService(IUnitOfWork UoW)
